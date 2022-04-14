@@ -1,3 +1,4 @@
+//// with arrow function 
 const App = () => {
   return (
     <div>
@@ -8,7 +9,7 @@ const App = () => {
 }
 export default App;
 
-
+//// basic modification 
 // function App() {
 //   return (
 //     <div>
@@ -17,10 +18,10 @@ export default App;
 //     </div>
 //   );
 // }
-
 // export default App;
 
 
+//// original code 
 // import logo from './logo.svg';
 // import './App.css';
 
