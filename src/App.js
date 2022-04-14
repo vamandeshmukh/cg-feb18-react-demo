@@ -3,7 +3,7 @@ const App = () => {
   return (
     <div>
       <h1>CG React App</h1>
-      <p>Welcome to Capgemini React app. </p>
+      <p>Welcome to Capgemini React app.</p>
     </div>
   );
 }
