@@ -1,10 +1,20 @@
+// JSX, component, state, props
+
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+
 //// with arrow function 
 const App = () => {
+
   return (
+
     <div>
+      <Header />
       <h1>CG React App</h1>
       <p>Welcome to Capgemini React app.</p>
+      <Footer />
     </div>
+
   );
 }
 export default App;
