@@ -1,13 +1,16 @@
+import { useState } from "react";
 import Child from "./Child";
 
 const Parent = () => {
 
     const parentDataInParent = 10;
-    let childDataInParent; // state 
+    // let childDataInParent; // state 
+    let [childDataInParent, setChildDataInParent] = useState(0);
 
     const getChildData = (num) => {
         console.log(num); // 15
-        childDataInParent = num;
+        // childDataInParent = num;
+        setChildDataInParent(num);
     }
 
     return (
