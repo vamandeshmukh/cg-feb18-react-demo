@@ -5,7 +5,7 @@ const Header = () => {
     return (
 
         <div>
-            <h1>Header Component</h1>
+            <h1 className="display-1 text-primary">Header Component</h1>
             <p>Welcome to Capgemini React app.</p>
             <p> {num} </p>
         </div>
