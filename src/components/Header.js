@@ -5,9 +5,8 @@ const Header = () => {
     return (
 
         <div>
-            <h1 className="display-1 text-primary">Header Component</h1>
-            <p>Welcome to Capgemini React app.</p>
-            <p> {num} </p>
+            <h1 className="display-4 text-primary text-center">Capgemini Website</h1>
+            <p>Header Component</p>
         </div>
 
     );

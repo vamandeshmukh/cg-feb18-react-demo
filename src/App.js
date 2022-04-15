@@ -2,6 +2,7 @@
 
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import Parent from "./components/Parent";
 
 //// with arrow function 
 const App = () => {
@@ -9,9 +10,9 @@ const App = () => {
   return (
 
     <div>
+      <p>App Component</p>
       <Header />
-      <h1>CG React App</h1>
-      <p>Welcome to Capgemini React app.</p>
+      <Parent />
       <Footer />
     </div>
 
