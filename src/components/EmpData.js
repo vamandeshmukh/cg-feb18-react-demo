@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
 
 const EmpData = () => {
@@ -26,7 +27,7 @@ const EmpData = () => {
         //     firstName: 'Sonu',
         //     salary: 50000
         // });
-        axios.get(`http://localhost:8088/emp/getemp/${eid}`)
+        axios.get(`http://localhost:8088/emp/get-employee-by-id/${eid}`)
             .then((response) => {
                 console.log(response.data);
                 setEmp(response.data);
