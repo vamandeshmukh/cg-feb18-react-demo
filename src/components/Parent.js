@@ -1,18 +1,39 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Child from "./Child";
-
 
 const Parent = () => {
 
     const parentDataInParent = 10;
-    // let childDataInParent; // state 
-    let [childDataInParent, abc] = useState(0);
+    // let childDataInParent = 0; // state 
+    const [childDataInParent, setChildDataInParent] = useState();
+
+    // using useState to create variables 
+    // number, string, boolean, object, array  
+    // const [num, setNum] = useState(0); // number variable 
+    // const [cityName, setCityName] = useState(''); // string variable 
+    // const [isMarried, setIsmarried] = useState(false); // booealn variable 
+    const [empData, setEmpData] = useState({}); // object variable 
+    // const [phones, setPhones] = useState([]); // array variable 
+
+    // useEffect(arg);
+    // useEffect(() => {});
+    // useEffect(arg1, arg2);
+    // useEffect(() => {}, []);
+
+    useEffect(() => {
+        setEmpData({
+            eid: 0,
+            firstName: '',
+            salary: 0
+        });
+        // setNum = 10;
+    }, []);
 
     const getChildData = (num) => {
         console.log(num); // 15
         // childDataInParent = num;
-        abc(num);
+        setChildDataInParent(num);
     }
 
     return (
@@ -24,6 +45,7 @@ const Parent = () => {
             <Child passDataToChild={parentDataInParent}
                 fun={getChildData}
             />
+            <p>{empData.eid}</p>
         </div>
 
     );

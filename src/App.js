@@ -3,6 +3,7 @@
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Parent from "./components/Parent";
+import EmpData from "./components/EmpData";
 
 //// with arrow function 
 const App = () => {
@@ -11,9 +12,10 @@ const App = () => {
 
     <div>
       <p>App Component</p>
-      <Header />
+      {/* <Header />
       <Parent />
-      <Footer />
+      <Footer /> */}
+      <EmpData />
     </div>
 
   );
