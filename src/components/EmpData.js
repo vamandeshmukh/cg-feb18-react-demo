@@ -19,12 +19,18 @@ const EmpData = () => {
     }
 
     const submitGetEmployee = (evt) => {
+        console.log(eid);
         evt.preventDefault();
-        setEmp({
-            employeeId: 101,
-            firstName: 'Sonu',
-            salary: 50000
-        });
+        // setEmp({
+        //     employeeId: 101,
+        //     firstName: 'Sonu',
+        //     salary: 50000
+        // });
+        axios.get(`http://localhost:8088/emp/getemp/${eid}`)
+            .then((response) => {
+                console.log(response.data);
+                setEmp(response.data);
+            });
     }
 
     return (
