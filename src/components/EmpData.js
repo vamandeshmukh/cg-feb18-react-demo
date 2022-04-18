@@ -1,5 +1,5 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
+import Department from "../models/Department";
 import Employee from "../models/Employee";
 import { getEmpByIdService, getAllEmpsService, addEmpService } from "../services/EmployeeService";
 
@@ -8,17 +8,15 @@ const EmpData = () => {
     const [eid, setEid] = useState('');
     const [emp, setEmp] = useState(new Employee());
     const [empToBeAdded, setEmpToBeAdded] = useState(new Employee());
+    const [department, setDepartment] = useState(new Department);
     const [allEmps, setAllEmps] = useState([]);
 
     useEffect(() => {
-        setEmp({
-            employeeId: 0,
-            firstName: '',
-            salary: 0
-        });
+
     }, []);
 
     const handleChange = (evt) => {
+        console.log(evt.target.name);
         console.log(evt.target.value);
         setEid(evt.target.value);
     }
@@ -31,18 +29,24 @@ const EmpData = () => {
             .then((response) => {
                 console.log(response.data);
                 setEmp(response.data);
-            });
+            })
+            .catch((error) => {
+                alert(error);
+                setEmp(new Employee());
+            })
     }
 
     const submitGetAllEmps = (evt) => {
-        console.log(`submitGetAllEmps`);
         evt.preventDefault();
-
         getAllEmpsService()
             .then((response) => {
                 console.log(response.data);
                 setAllEmps(response.data);
                 console.log(allEmps);
+            })
+            .catch((error) => {
+                alert(error);
+                setAllEmps([]);
             });
     }
 
@@ -53,15 +57,24 @@ const EmpData = () => {
             ...empToBeAdded,
             [e.target.name]: e.target.value
         });
+
+        setDepartment({
+            ...department,
+            [e.target.name]: e.target.value
+        });
     }
 
     const submitAddEmp = (evt) => {
         evt.preventDefault();
-        addEmpService(empToBeAdded)
+        let empTemp = { ...empToBeAdded, department };
+        addEmpService(empTemp)
             .then((response) => {
+                console.log(response.data);
                 alert(`Employee with employeeId ${response.data.employeeId} added successfully.`);
             })
             .catch(() => {
+                setEmpToBeAdded(new Employee());
+                empTemp = '';
                 alert("Employee could not be added.");
             });
     }
@@ -89,6 +102,14 @@ const EmpData = () => {
                         onChange={handleAddEmp}
                         placeholder="Enter salary" />
                     <input
+                        type="number"
+                        id="departmentId"
+                        name="departmentId"
+                        className="form-control mb-3 mt-3"
+                        value={department.departmentId}
+                        onChange={handleAddEmp}
+                        placeholder="Enter Department Id" />
+                    <input
                         type="submit"
                         className="btn btn-primary form-control mb-3 mt-3"
                         value="Add Employee"
@@ -111,7 +132,23 @@ const EmpData = () => {
                         <input type="submit" className="form-control mb-3 mt-3 btn btn-primary" value="Get Employee" onClick={submitGetEmpById} />
                     </form>
                 </div>
-                <p>Employee data: {emp.employeeId} {emp.firstName} {emp.salary}</p>
+                <div> {(emp.employeeId) &&
+                    <div>
+                        <p className="font-weight-bold">Employee data:</p>
+                        <p> Employee id: {emp.employeeId} </p>
+                        <p> First Name: {emp.firstName} </p>
+                        <p> Salary: {emp.salary} </p>
+                        {(emp.department) &&
+                            <div>
+                                <p> Department id: {emp.department.departmentId} </p>
+                                <p> Department name: {emp.department.departmentName} </p>
+                                <p> City: {emp.department.city}  </p>
+                            </div>
+                        }
+                    </div>
+                }
+
+                </div>
             </div>
             <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-6">
                 <p>Get All Employees</p>

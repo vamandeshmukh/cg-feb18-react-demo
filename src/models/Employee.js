@@ -1,10 +1,11 @@
+import Department from "./Department";
 
 class Employee {
 
     employeeId;
     firstName;
     salary;
-    department;
+    department = new Department();
 
 }
 
