@@ -6,6 +6,7 @@ const EmpData = () => {
     const [eid, setEid] = useState('');
     const [emp, setEmp] = useState({});
     const [empToBeAdded, setEmpToBeAdded] = useState({});
+    const [allEmps, setAllEmps] = useState([]);
 
     useEffect(() => {
         setEmp({
@@ -30,7 +31,20 @@ const EmpData = () => {
             });
     }
 
+    const submitGetAllEmps = (evt) => {
+        console.log(`submitGetAllEmps`);
+        evt.preventDefault();
+        axios.get(`http://localhost:8088/emp/get-all-employees`)
+            .then((response) => {
+                console.log(response.data);
+                setAllEmps(response.data);
+                console.log(allEmps);
+            });
+    }
+
     const handleAddEmp = (e) => {
+        console.log(e.target.name);
+        console.log(e.target.value);
         setEmpToBeAdded({
             ...empToBeAdded,
             [e.target.name]: e.target.value
@@ -51,7 +65,7 @@ const EmpData = () => {
     return (
         <div className="container">
             <p className="display-4 text-primary">EmpData Component</p>
-            <div>
+            <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-6">
                 <p>Find an Employee</p>
                 <div>
                     <form className="form form-group">
@@ -69,7 +83,7 @@ const EmpData = () => {
                 </div>
                 <p>Employee data: {emp.employeeId} {emp.firstName} {emp.salary}</p>
             </div>
-            <div>
+            <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-6">
                 <p>Add New Employee</p>
                 <div className="form form-group" >
                     <input
@@ -96,6 +110,18 @@ const EmpData = () => {
                     />
                 </div>
             </div>
+            <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-6">
+                <p>Get All Employees</p>
+                <div className="form form-group" >
+                    <input
+                        type="button"
+                        className="btn btn-primary form-control mb-3 mt-3"
+                        value="Get All Employees"
+                        onClick={submitGetAllEmps}
+                    />
+                </div>
+            </div>
+
         </div >
     );
 }
