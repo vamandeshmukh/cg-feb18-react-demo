@@ -9,7 +9,7 @@ const EmpData = () => {
     const [emp, setEmp] = useState(new Employee());
     const [empToBeAdded, setEmpToBeAdded] = useState(new Employee());
     const [department, setDepartment] = useState(new Department);
-    const [allEmps, setAllEmps] = useState([]);
+    const [allEmps, setAllEmps] = useState();
 
     useEffect(() => {
 
@@ -40,8 +40,8 @@ const EmpData = () => {
         evt.preventDefault();
         getAllEmpsService()
             .then((response) => {
-                console.log(response.data);
                 setAllEmps(response.data);
+                console.log(response.data);
                 console.log(allEmps);
             })
             .catch((error) => {
@@ -134,7 +134,7 @@ const EmpData = () => {
                 </div>
                 <div> {(emp.employeeId) &&
                     <div>
-                        <p className="font-weight-bold">Employee data:</p>
+                        <p className="text-primary text-center font-weight-bold lead">Employee Details</p>
                         <p> Employee id: {emp.employeeId} </p>
                         <p> First Name: {emp.firstName} </p>
                         <p> Salary: {emp.salary} </p>
@@ -150,7 +150,7 @@ const EmpData = () => {
 
                 </div>
             </div>
-            <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-6">
+            <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-8">
                 <p>Get All Employees</p>
                 <div className="form form-group" >
                     <input
@@ -160,12 +160,65 @@ const EmpData = () => {
                         onClick={submitGetAllEmps}
                     />
                 </div>
+                <div>
+                    <div> {(allEmps) &&
+                        <div>
+                            <p className="text-primary text-center font-weight-bold lead">List of All Employees</p>
+                            {
+                                <table className="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Emp Id</th>
+                                            <th>First Name</th>
+                                            <th>Salary</th>
+                                            <th>Dept Id</th>
+                                            <th>Dept Name</th>
+                                            <th>City</th>
+                                        </tr>
+                                    </thead>
+                                    {allEmps.map((e =>
+                                        <tbody>
+                                            <tr>
+                                                <td>{e.employeeId}</td>
+                                                <td>{e.firstName}</td>
+                                                <td>{e.salary}</td>
+                                                {(e.department) &&
+                                                    <>
+                                                        <td>{e.department.departmentId}</td>
+                                                        <td>{e.department.departmentName}</td>
+                                                        <td>{e.department.city}</td>
+                                                    </>
+                                                }
+                                            </tr>
+                                        </tbody>
+                                    ))}
+                                </table>
+                            }
+                        </div>
+                    }
+                    </div>
+                </div>
             </div>
         </div >
     );
 }
 
 export default EmpData;
+
+
+{/* <div>
+<p className="font-weight-bold">Employee data:</p>
+<p> Employee id: {emp.employeeId} </p>
+<p> First Name: {emp.firstName} </p>
+<p> Salary: {emp.salary} </p>
+{(emp.department) &&
+    <div>
+        <p> Department id: {emp.department.departmentId} </p>
+        <p> Department name: {emp.department.departmentName} </p>
+        <p> City: {emp.department.city}  </p>
+    </div>
+}
+</div> */}
 
 
 
