@@ -5,6 +5,7 @@ const EmpData = () => {
 
     const [eid, setEid] = useState('');
     const [emp, setEmp] = useState({});
+    const [empToBeAdded, setEmpToBeAdded] = useState({});
 
     useEffect(() => {
         setEmp({
@@ -19,18 +20,31 @@ const EmpData = () => {
         setEid(evt.target.value);
     }
 
-    const submitGetEmployee = (evt) => {
+    const submitGetEmpById = (evt) => {
         console.log(eid);
         evt.preventDefault();
-        // setEmp({
-        //     employeeId: 101,
-        //     firstName: 'Sonu',
-        //     salary: 50000
-        // });
         axios.get(`http://localhost:8088/emp/get-employee-by-id/${eid}`)
             .then((response) => {
                 console.log(response.data);
                 setEmp(response.data);
+            });
+    }
+
+    const handleAddEmp = (e) => {
+        setEmpToBeAdded({
+            ...empToBeAdded,
+            [e.target.name]: e.target.value
+        });
+    }
+
+    const submitAddEmp = (evt) => {
+        evt.preventDefault();
+        axios.post(`http://localhost:8088/emp/add-employee`, empToBeAdded)
+            .then((response) => {
+                alert(`Employee with employeeId ${response.data.employeeId} added successfully.`);
+            })
+            .catch(() => {
+                alert("Employee could not be added.");
             });
     }
 
@@ -50,13 +64,39 @@ const EmpData = () => {
                             onChange={handleChange}
                             autoFocus />
 
-                        <input type="submit" className="form-control mb-3 mt-3 btn btn-primary" value="Get Employee" onClick={submitGetEmployee} />
-                        {/* submitGetEmployee */}
+                        <input type="submit" className="form-control mb-3 mt-3 btn btn-primary" value="Get Employee" onClick={submitGetEmpById} />
                     </form>
                 </div>
                 <p>Employee data: {emp.employeeId} {emp.firstName} {emp.salary}</p>
             </div>
-        </div>
+            <div>
+                <p>Add New Employee</p>
+                <div className="form form-group" >
+                    <input
+                        type="text"
+                        id="firstName"
+                        name="firstName"
+                        className="form-control mb-3 mt-3"
+                        value={empToBeAdded.firstName}
+                        onChange={handleAddEmp}
+                        placeholder="Enter First Name" />
+                    <input
+                        type="number"
+                        id="salary"
+                        name="salary"
+                        className="form-control mb-3 mt-3"
+                        value={empToBeAdded.salary}
+                        onChange={handleAddEmp}
+                        placeholder="Enter salary" />
+                    <input
+                        type="submit"
+                        className="btn btn-primary form-control mb-3 mt-3"
+                        value="Add Employee"
+                        onClick={submitAddEmp}
+                    />
+                </div>
+            </div>
+        </div >
     );
 }
 
