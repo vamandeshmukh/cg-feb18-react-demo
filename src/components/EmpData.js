@@ -18,6 +18,7 @@ const EmpData = () => {
         console.log(evt.target.value);
         setEid(evt.target.value);
     }
+
     const submitGetEmployee = (evt) => {
         evt.preventDefault();
         setEmp({
