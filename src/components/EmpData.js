@@ -147,7 +147,6 @@ const EmpData = () => {
                         }
                     </div>
                 }
-
                 </div>
             </div>
             <div className="bg-white shadow shadow-regular mb-3 mt-3 px-3 py-3 pb-3 pt-3 col-8">

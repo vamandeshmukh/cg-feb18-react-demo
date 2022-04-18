@@ -1,26 +1,43 @@
-// JSX, component, state, props
+import Routes from './routing/Routes';
 
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import Parent from "./components/Parent";
-import EmpData from "./components/EmpData";
-
-//// with arrow function 
+//// with routes  
 const App = () => {
 
   return (
 
     <div>
-      <p>App Component</p>
-      {/* <Header />
-      <Parent />
-      <Footer /> */}
-      <EmpData />
+      <Routes />
     </div>
 
   );
 }
 export default App;
+
+
+
+// // JSX, component, state, props
+
+// import Footer from "./components/Footer";
+// import Header from "./components/Header";
+// import Parent from "./components/Parent";
+// import EmpData from "./components/EmpData";
+
+// //// with arrow function 
+// const App = () => {
+
+//   return (
+
+//     <div>
+//       <p>App Component</p>
+//       {/* <Header />
+//       <Parent />
+//       <Footer /> */}
+//       <EmpData />
+//     </div>
+
+//   );
+// }
+// export default App;
 
 //// basic modification 
 // function App() {
