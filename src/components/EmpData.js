@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 
 const EmpData = () => {
 
-
-    const [eid, setEid] = useState(0);
+    const [eid, setEid] = useState('');
     const [emp, setEmp] = useState({});
 
     useEffect(() => {
@@ -35,7 +34,15 @@ const EmpData = () => {
                 <p>Find an Employee</p>
                 <div>
                     <form className="form form-group">
-                        <input type="number" className="form-control mb-3 mt-3" id="eid" value={eid} placeholder="Enter employee id" onChange={handleChange} />
+                        <input
+                            type="number"
+                            className="form-control mb-3 mt-3"
+                            id="eid"
+                            value={eid}
+                            placeholder="Enter employee id"
+                            onChange={handleChange}
+                            autoFocus />
+
                         <input type="submit" className="form-control mb-3 mt-3 btn btn-primary" value="Get Employee" onClick={submitGetEmployee} />
                         {/* submitGetEmployee */}
                     </form>
