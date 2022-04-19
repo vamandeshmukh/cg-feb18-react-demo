@@ -3,6 +3,7 @@ import Employee from "../models/Employee";
 
 const EmpSlice = createSlice({
 
+    //  name is only one 
     name: 'emp',
 
     initialState: {
@@ -16,7 +17,7 @@ const EmpSlice = createSlice({
             console.log(action.payload);
             state.empData = action.payload;
         }
-        // , more methods  
+        // , more methods in reducers   
     }
 });
 

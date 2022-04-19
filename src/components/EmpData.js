@@ -7,19 +7,18 @@ import { useDispatch, useSelector } from "react-redux";
 
 const EmpData = () => {
 
-    const [eid, setEid] = useState('');
-    const [emp, setEmp] = useState(new Employee());
+    const [eid, setEid] = useState(''); // submitGetEmpById
     const [empToBeAdded, setEmpToBeAdded] = useState(new Employee());
     const [department, setDepartment] = useState(new Department());
     const [allEmps, setAllEmps] = useState();
     const empDataFromStore = useSelector((state) => state.emp.empData);
     const dispatch = useDispatch();
 
-    useEffect(
-        () => {
+    // useEffect(
+    //     () => {
 
-        }
-        , []);
+    //     }
+    //     , []);
 
     const handleChange = (evt) => {
         console.log(evt.target.name);
@@ -137,7 +136,7 @@ const EmpData = () => {
                         <input type="submit" className="form-control mb-3 mt-3 btn btn-primary" value="Get Employee" onClick={submitGetEmpById} />
                     </form>
                 </div>
-                <div> {(emp.employeeId) &&
+                <div> {(empDataFromStore.employeeId) &&
                     <div>
                         <p className="text-primary text-center font-weight-bold lead">Employee Details</p>
                         <p> Employee id: {empDataFromStore.employeeId} </p>
