@@ -12,7 +12,7 @@ const Home = () => {
                 style={{ height: "100vh" }}
             >
                 <h1 className="display-4 text-primary  pt-5">Welcome to Capgemini</h1>
-                <p>Capgemini trainees, especially those who are from Oct 12 batch3 are really very genious!</p>
+                <p>Capgemini trainees, especially those who are from 18 Feb  are really very genious!</p>
             </div>
 
             {/* <div >

@@ -20,7 +20,7 @@ const Routes = () => {
                     <Header />
                     <div>
                         <Switch>
-                            <Route exact path="/"  > <Home /> </Route>
+                            <Route exact path="/" > <Home /> </Route>
                             <Route path="/home" > <Home /> </Route>
                             <Route path="/parent"> <Parent /> </Route>
                             <Route path="/child"> <Child /> </Route>
