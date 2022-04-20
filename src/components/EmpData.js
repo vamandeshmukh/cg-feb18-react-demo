@@ -1,4 +1,4 @@
-import { useState } from "react";
+ import { useState } from "react";
 import Department from "../models/Department";
 import Employee from "../models/Employee";
 import { getEmpByIdService, getAllEmpsService, addEmpService } from "../services/EmployeeService";
@@ -10,7 +10,6 @@ const EmpData = () => {
     const [eid, setEid] = useState(''); // submitGetEmpById
     const [empToBeAdded, setEmpToBeAdded] = useState(new Employee());
     const [department, setDepartment] = useState(new Department());
-    const [allEmps, setAllEmps] = useState();
 
     const empDataFromStore = useSelector((state) => state.emp.empData);
     const allEmpsDataFromStore = useSelector((state) => state.emp.empList);
@@ -45,7 +44,6 @@ const EmpData = () => {
             })
             .catch((error) => {
                 alert(error);
-                setAllEmps([]);
             });
     }
 

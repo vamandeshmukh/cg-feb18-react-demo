@@ -7,17 +7,11 @@ const Parent = () => {
 
     const parentDataInParent = 10;
     const [childDataInParent, setChildDataInParent] = useState();
-    // const dataOfThisComponent = useSelector((state) => { return state.parent.parentData });
+    const dataOfThisComponent = useSelector((state) => { return state.parent.parentData });
     const dataOfAnotherComponent = useSelector((state) => { return state.emp.empData });
 
-    const [empData, setEmpData] = useState({});
-
     useEffect(() => {
-        setEmpData({
-            eid: 0,
-            firstName: '',
-            salary: 0
-        });
+
     }, []);
 
     const getChildData = (num) => {
@@ -30,12 +24,12 @@ const Parent = () => {
         <div className="container">
             <p>Parent Component</p>
             <p> Emp data in parent component: {dataOfAnotherComponent.firstName}</p>
+            <p> Parent slice data in parent component: {dataOfThisComponent}</p>
             <p> Parent data in parent component: {parentDataInParent}</p>
             <p> Child data in parent component: {childDataInParent}</p>
             <Child passDataToChild={parentDataInParent}
                 fun={getChildData}
             />
-            <p>{empData.eid}</p>
         </div>
 
     );
