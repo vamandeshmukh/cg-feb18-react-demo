@@ -7,6 +7,7 @@ const Parent = () => {
 
     const parentDataInParent = 10;
     const [childDataInParent, setChildDataInParent] = useState();
+    // const dataOfThisComponent = useSelector((state) => { return state.parent.parentData });
     const dataOfAnotherComponent = useSelector((state) => { return state.emp.empData });
 
     const [empData, setEmpData] = useState({});
