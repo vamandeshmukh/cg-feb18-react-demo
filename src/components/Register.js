@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import AppUser from '../models/AppUser';
 import { registerService } from '../services/AppUserService';
 
@@ -26,7 +26,6 @@ const Register = () => {
         registerService(appUser)
             .then((response) => {
                 console.log(response.data);
-                localStorage.setItem('appUser', appUser);
                 alert('You are registered successfully. Please login now.');
                 history.push('/login'); // check this method to navigate 
             }).catch((error) => {

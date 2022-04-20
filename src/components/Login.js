@@ -1,13 +1,18 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import AppUser from '../models/AppUser';
 import { loginService } from '../services/AppUserService';
-
+import { getAppUser } from '../redux/AppUserSlice';
+import { useDispatch, useSelector } from 'react-redux';
 const Login = () => {
 
     const [appUser, setAppUser] = useState(new AppUser());
+    const currentUser = useSelector(state => state.appUser.loggedInUser);
     const [credentials, setCredentials] = useState('');
+    const history = useHistory();
+    const dispach = useDispatch();
+
 
     const handleAppUser = (event) => {
         console.log(event.target.name);
@@ -22,12 +27,12 @@ const Login = () => {
         loginService(appUser)
             .then((response) => {
                 console.log(response.data);
-                sessionStorage.setItem('isUserLoggedIn', true);
+                sessionStorage.setItem('loggedInUser', response.data);
                 alert('Success');
-                window.location.assign('/home');
-                // history.push('/home');
+                // window.location.assign('/home');
+                history.push('/home');
             }).catch((error) => {
-                sessionStorage.setItem('isUserLoggedIn', false);
+                sessionStorage.removeItem('loggedInUser');
                 sessionStorage.clear();
                 console.log(error.response);
                 setCredentials("Enter proper credentials.");

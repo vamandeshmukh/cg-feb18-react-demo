@@ -9,6 +9,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import empReducer from './EmpSlice';
 import parentReducer from './EmpSlice';
+import appUserReducer from './AppUserSlice';
 
 
 console.log('store initialized...');
@@ -17,7 +18,8 @@ const store = configureStore(
     {
         reducer: {
             emp: empReducer,
-            parent: parentReducer
+            parent: parentReducer,
+            appUser: appUserReducer
             // , more reducers 
         }
     }
