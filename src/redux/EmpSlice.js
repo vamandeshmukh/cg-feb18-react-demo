@@ -16,6 +16,9 @@ const EmpSlice = createSlice({
         getEmpById: (state, action) => {
             console.log(action.payload);
             state.empData = action.payload;
+        }, 
+        getAllEmps: () => {
+            // code 
         }
         // , more methods in reducers   
     }

@@ -11,7 +11,8 @@ const EmpData = () => {
     const [empToBeAdded, setEmpToBeAdded] = useState(new Employee());
     const [department, setDepartment] = useState(new Department());
     const [allEmps, setAllEmps] = useState();
-    const empDataFromStore = useSelector((state) => state.emp.empData);
+
+    const empDataFromStore = useSelector((abc) => abc.emp.empData);
     const dispatch = useDispatch();
 
     // useEffect(

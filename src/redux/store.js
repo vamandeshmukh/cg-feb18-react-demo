@@ -1,3 +1,4 @@
+
 // steps to use redux in react app - 
 // 1. create store (only one) 
 // 2. provide the store to index.js 
@@ -10,6 +11,7 @@ import empReducer from './EmpSlice';
 
 
 console.log('store initialized...');
+
 const store = configureStore(
     {
         reducer: {
