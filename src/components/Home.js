@@ -9,7 +9,7 @@ const Home = () => {
                 backgroundPosition: 'cover',
             }}>
             <div className="container"
-                style={{ height: "100vh" }}
+                style={{ minHeight: "100vh" }}
             >
                 <h1 className="display-4 text-primary  pt-5">Welcome to Capgemini</h1>
                 <p>Capgemini trainees, especially those who are from 18 Feb  are really very genious!</p>

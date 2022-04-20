@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const EmpData = () => {
 
-    const [eid, setEid] = useState(''); // submitGetEmpById
+    const [eid, setEid] = useState(''); 
     const [empToBeAdded, setEmpToBeAdded] = useState(new Employee());
     const [department, setDepartment] = useState(new Department());
 

@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import AppUser from '../models/AppUser';
 import { loginService } from '../services/AppUserService';
- 
+
 const Login = () => {
 
     const [appUser, setAppUser] = useState(new AppUser());
@@ -35,7 +35,7 @@ const Login = () => {
         event.preventDefault();
     }
     return (
-        <div className="container">
+        <div className="container" >
             <div className="col-4 mt-3" >
                 <h1 className="display-4 text-primary">Login</h1>
                 <form className="form form-group form-dark " onSubmit={submitAppUser}>

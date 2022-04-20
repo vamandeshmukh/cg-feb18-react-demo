@@ -14,11 +14,11 @@ import Register from "../components/Register";
 const Routes = () => {
 
     return (
-        <div>
+        <div >
             <Router>
                 <div>
                     <Header />
-                    <div>
+                    <div style={{ minHeight: "79vh" }}>
                         <Switch>
                             <Route exact path="/" > <Home /> </Route>
                             <Route path="/home" > <Home /> </Route>
@@ -33,7 +33,7 @@ const Routes = () => {
                     <Footer />
                 </div>
             </Router>
-        </div>
+        </div >
     );
 }
 
