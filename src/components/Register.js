@@ -36,7 +36,7 @@ const Register = () => {
     }
     return (
         <div className="container">
-            <div className="col-4 mt-3" >
+            <div className="col-4 mt-3 pb-3 shadow bg-white" >
                 <h1 className="display-4 text-primary">Register</h1>
                 <form className="form form-group form-dark " onSubmit={submitAppUser}>
                     <div>
@@ -49,6 +49,7 @@ const Register = () => {
                             value={appUser.userName}
                             onChange={handleAppUser}
                             required
+                            autoFocus
                         />
                         <input
                             type="password"
@@ -70,7 +71,7 @@ const Register = () => {
                             type="submit"
                             id="submit"
                             name="submit"
-                            className="form-control btn btn-primary mb-3"
+                            className="form-control btn btn-success mb-3"
                             value="Register"
                             onClick={submitAppUser}
                         />

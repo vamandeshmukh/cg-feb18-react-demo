@@ -1,15 +1,13 @@
 import Routes from './routing/Routes';
 
-//// with routes  
 const App = () => {
 
   return (
-
     <div>
       <Routes />
     </div>
-
   );
+
 }
 export default App;
 

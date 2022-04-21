@@ -3,16 +3,12 @@ import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import AppUser from '../models/AppUser';
 import { loginService } from '../services/AppUserService';
-import { getAppUser } from '../redux/AppUserSlice';
-import { useDispatch, useSelector } from 'react-redux';
+
 const Login = () => {
 
     const [appUser, setAppUser] = useState(new AppUser());
-    const currentUser = useSelector(state => state.appUser.loggedInUser);
     const [credentials, setCredentials] = useState('');
     const history = useHistory();
-    const dispach = useDispatch();
-
 
     const handleAppUser = (event) => {
         console.log(event.target.name);
@@ -26,14 +22,15 @@ const Login = () => {
     const submitAppUser = (event) => {
         loginService(appUser)
             .then((response) => {
-                console.log(response.data);
-                sessionStorage.setItem('loggedInUser', response.data);
+                localStorage.setItem('loggedInUser', response.data);
+                console.log(localStorage.getItem('loggedInUser'));
                 alert('Success');
-                // window.location.assign('/home');
                 history.push('/home');
+                // window.location.assign('/home');
+                window.location.reload();
             }).catch((error) => {
-                sessionStorage.removeItem('loggedInUser');
-                sessionStorage.clear();
+                localStorage.removeItem('loggedInUser');
+                // localStorage.clear();
                 console.log(error.response);
                 setCredentials("Enter proper credentials.");
             });
@@ -41,7 +38,7 @@ const Login = () => {
     }
     return (
         <div className="container" >
-            <div className="col-4 mt-3" >
+            <div className="col-4 mt-3 pb-3 shadow bg-white" >
                 <h1 className="display-4 text-primary">Login</h1>
                 <form className="form form-group form-dark " onSubmit={submitAppUser}>
                     <div>
@@ -78,7 +75,7 @@ const Login = () => {
                             type="submit"
                             id="submit"
                             name="submit"
-                            className="form-control btn btn-primary mb-3"
+                            className="form-control btn btn-success mb-3"
                             value="Login"
                             onClick={submitAppUser}
                         />

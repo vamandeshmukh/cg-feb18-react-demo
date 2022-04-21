@@ -14,6 +14,8 @@ const AppUserSlice = createSlice({
         getAppUser: (state, action) => {
             console.log(action.payload);
             state.loggedInUser = action.payload;
+            localStorage.setItem('loggedInUser', action.payload);
+            console.log(action.payload);
         }
     }
 });
