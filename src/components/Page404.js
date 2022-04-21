@@ -10,8 +10,9 @@ const Page404 = () => {
 
         setTimeout(() => {
             setShouldRedirect(true);
-        }, 3000);
-    }, []);
+        }, 3000); 
+    }, 
+    []);
 
     if (shouldRedirect) {
         return (
