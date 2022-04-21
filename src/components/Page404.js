@@ -1,6 +1,8 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Page404 = () => {
+
     return (
         <div className="container">
             <h1>Oops!</h1>
@@ -9,6 +11,7 @@ const Page404 = () => {
 
         </div>
     );
+
 }
 
 export default Page404;
