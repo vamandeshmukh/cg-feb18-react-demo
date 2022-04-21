@@ -24,8 +24,8 @@ const AdminRoutes = () => {
                             <Route path="/parent"> <Parent /> </Route>
                             <Route path="/child"> <Child /> </Route>
                             <Route path="/emp"> <EmpData /> </Route>
-                            <Route path="/register"> <Redirect> <Home /> </Redirect> </Route>
-                            <Route path="/login"> <Redirect> <Home /> </Redirect> </Route>
+                            <Route path="/register"> <Redirect to="/" /> </Route>
+                            <Route path="/login"> <Redirect to="/" /> </Route>
                             <Route path="/logout"> <Logout /> </Route>
                             <Route path="/*"> <Page404 /> </Route>
                         </Switch>
