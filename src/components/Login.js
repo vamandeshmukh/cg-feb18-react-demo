@@ -26,11 +26,11 @@ const Login = () => {
                 console.log(localStorage.getItem('loggedInUser'));
                 alert('Success');
                 history.push('/home');
-                // window.location.assign('/home');
+                window.location.assign('/home');
                 window.location.reload();
             }).catch((error) => {
                 localStorage.removeItem('loggedInUser');
-                // localStorage.clear();
+                localStorage.clear();
                 console.log(error.response);
                 setCredentials("Enter proper credentials.");
             });
@@ -83,6 +83,8 @@ const Login = () => {
                 </form>
                 <p className="text-danger">{credentials}</p>
                 <Link to="/register" className="btn btn-primary col-12">Not yet registered? Register</Link>
+            </div>
+            <div>
             </div>
         </div >
     )
